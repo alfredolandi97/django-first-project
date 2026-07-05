@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends "first_app/base.html" %}
+{% load static %}
+{% load my_extras %}
+  {% block body_block %}
+    <h1>{{ text|cut_custom:"World" }}</h1>
+    <h1>{{ number|add:"99" }}</h1>
+    <h1>Hi, Welcome to Django Level Two</h1>
+    <h2>Here you are the access records:</h2>
+    <div class="djangotwo">
+
+      {% if access_records %}
+        <table>
+          <thead>
+            <th>Site Name</th>
+            <th>Date Accessed</th>
+          </thead>
+          {% for acc in access_records%}
+          <tr>
+            <td>{{ acc.name }}</td>
+            <td>{{ acc.date }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+        <p>No access records found!</p>
+      {% endif %}
+      
+    </div>
+    <img src="{% static "images/Django-The-Python-Web-Framework.jpg" %}" alt="django">
+  {% endblock %}
